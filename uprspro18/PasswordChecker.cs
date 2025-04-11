@@ -10,10 +10,14 @@ namespace uprspro18
     {
         public static bool ValidatePassword(string password)
         {
-            /*if (password.Length < 8 || password.Length > 20)
+            if (string.IsNullOrEmpty(password))
             {
                 return false;
-            }*/
+            }///первая проверка которая требует наличия *
+            if (password.Length < 8 || password.Length > 20)
+            {
+                return false;
+            }
             if (!password.Any(Char.IsLower))
             {
                 return false;
@@ -30,11 +34,20 @@ namespace uprspro18
             {
                 return false;
             }
-            if(password == null)
+           
+            if (password == null)
             {
                 return false;
             }
-            return true;
+            if (!password.Contains('*')) // требуем
+            {
+                return false;
+            }
+            if (password.Contains('*'))// не требуем 
+            {
+                return false;
+            }
+                return true;
         }
     }
 }

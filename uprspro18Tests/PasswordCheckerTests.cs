@@ -186,12 +186,39 @@ namespace uprspro18.Tests
         [TestMethod()]
         public void CheckNullPasswordReturnsTrue()
         {
-            string password = "A1a*";
+            string password = "A1a*hhbyugyugy";
             bool expected = true;
 
             bool actual = PasswordChecker.ValidatePassword(password);
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void ValidatePassword_WithAsterisk_ReturnsTrue()
+        {
+            // Arrange
+            string password = "Pass123*$"; // Пароль содержит *
+            bool expected = true;
 
+            // Act
+            bool actual = PasswordChecker.ValidatePassword(password);
+
+            // Assert
+            Assert.AreEqual(expected, actual,
+                "Пароль с '*' должен быть валидным, если '*' обязателен.");
+        }
+        [TestMethod]
+        public void ValidatePassword_WithoutAsterisk_ReturnsFalse()
+        {
+            // Arrange
+            string password = "Pass123$"; // Пароль БЕЗ *
+            bool expected = false;///
+
+            // Act
+            bool actual = PasswordChecker.ValidatePassword(password);
+
+            // Assert
+            Assert.AreEqual(expected, actual,
+                "Пароль без '*' должен быть невалидным, если '*' обязателен.");
+        }
     }
 }
