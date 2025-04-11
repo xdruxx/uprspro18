@@ -27,7 +27,7 @@ namespace uprspro18.Tests
         /// 
         /// </summary>
         public void Check8SymbolsReturnFalse()
-        {///yuio
+        {///yuio/////
             //Arrange
             string password = "fNr7&140";
             bool expected = false;
