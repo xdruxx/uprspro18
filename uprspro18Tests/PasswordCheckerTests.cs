@@ -219,6 +219,6 @@ namespace uprspro18.Tests
             // Assert
             Assert.AreEqual(expected, actual,
                 "Пароль без '*' должен быть невалидным, если '*' обязателен.");
-        }
+        }/////qwerty
     }
 }
